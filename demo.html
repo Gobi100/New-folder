@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Change Password</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Styles from your original code */
+        .content__box {
+            padding: 30px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .content-box {
+            background: #FFFFFF;
+            box-sizing: border-box;
+
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* overflow-x: hidden; */
+            padding: 0;
+            margin: 0;
+            background: #f3f5f9;
+        }
+
+        .d-md-flex {
+            display: flex !important;
+        }
+
+        .content-box .change-password-form {
+            padding-right: 46px;
+            position: relative;
+        }
+
+        .password__wrapper {
+            background-color: #ffffff;
+            padding: 66px 53px;
+            border-radius: 15px;
+        }
+
+        .password__wrapper .content-box .change-password-form {
+            padding-right: 74px;
+            position: relative;
+        }
+
+        .content-box .change-password-form,
+        .content-box .change-password-content {
+            width: 50%;
+            margin-top: 0;
+        }
+
+        .password__wrapper .content-box .change-password-form::after {
+            display: none;
+        }
+
+        .change-password-content-wrap {
+            width: 50%;
+        }
+
+        .password__wrapper .content-box .change-password-content {
+            border: 1px solid #DFDFDF;
+            padding: 46px;
+        }
+
+        .change-password-content-wrap .change-password-content {
+            width: 100%;
+        }
+
+        .content-box .change-password-content {
+            padding-left: 46px;
+        }
+
+        .change-password-content ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .change-password-content ul li {
+            position: relative;
+            padding-left: 30px;
+            font-size: 13px;
+            line-height: 1.4;
+            padding-bottom: 15px;
+            list-style: none;
+        }
+
+        .change-password-content ul li input {
+            position: absolute;
+            left: 0;
+            vertical-align: middle;
+            padding-right: 9px;
+        }
+
+        .content-box .input-row label {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        .d-block {
+            display: block !important;
+        }
+
+        .w-100 {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .content-box .input-row+.input-row {
+            margin-top: 16px;
+        }
+
+        .content-box .input-row input {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            background: #F1F1F1;
+            border-radius: 100px;
+            border: none;
+            padding: 0 20px;
+        }
+
+        .h-52 {
+            height: 52px;
+        }
+
+        .password__wrapper .pass-health-progress {
+            margin-top: 7px;
+        }
+
+        .password__wrapper .pass-health-progress>div {
+            padding: 0 15px;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .password__wrapper .pass-health-progress progress {
+            margin-left: 2px;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .input-row .pass-health-progress label {
+            display: block;
+            padding-right: 20px;
+            text-align: right;
+            font-size: 11px;
+            color: #828499;
+        }
+
+        .pass-health-msg {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            overflow-clip-margin: content-box;
+            overflow: clip;
+        }
+
+        .pass-health-msg p span {
+            font-weight: 600;
+        }
+
+        .pass-health-msg p {
+            font-size: 13px;
+            line-height: 18px;
+            color: #828499;
+            font-weight: 400;
+            padding-left: 14px;
+            margin-top: 20px;
+            padding-right: 50px;
+            margin-bottom: 18px;
+        }
+
+        .custom-color .btn.primary {
+            border: 1px solid #3044C4;
+            background-color: #3044C4;
+            color: #ffffff;
+        }
+
+        .btn {
+            background: #ffffff;
+            border-radius: 50px;
+            border: none;
+            box-shadow: none;
+            padding: 12px 25px;
+            min-height: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: capitalize;
+            transition: all 0.3s ease-in-out;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        .text-password {
+            text-align: center;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 35px;
+            color: #333333;
+            margin: 10px 0;
+        }
+
+        /* Style the checkbox */
+        /* input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 1px solid #3044C4;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+} */
+
+        /* Style the checkmark when the checkbox is checked */
+        /* input[type="checkbox"]:checked::after {
+    content: '✓';
+    font-size: 14px;
+    color: #3044C4;
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+        /* Change the checkbox color when focused */
+        /* input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(48, 68, 196, 0.5);
+} */
+        input[type="checkbox"] {
+
+            background-color: #fff;
+            border: 1px solid #3044C4;
+        }
+
+
+        @media only screen and (max-width: 636px) {
+            .password__wrapper .content-box {
+                padding: 20px;
+            }
+
+            .password__wrapper .d-md-flex {
+                flex-direction: column !important;
+                /* flex-wrap: wrap !important; */
+                width: auto;
+            }
+
+            .content__box {
+                padding: 15px 10px;
+                width: auto;
+            }
+
+            .password__wrapper {
+                padding: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body class="custom-color">
+    <div class="main custom-color">
+        <div class="content__box">
+            <div class="password__wrapper">
+                <div class="content-box">
+                    <div class="d-md-flex">
+                        <div class="change-password-form">
+                            <form id="changePasswordForm">
+                                <div class="input-row">
+                                    <label for="oldPassword" class="d-block w-100">Enter Old Password</label>
+                                    <input type="password" id="oldPassword" name="oldPassword"
+                                        placeholder="Old Password" class="w-100 h-52" required>
+                                </div>
+                                <div class="input-row">
+                                    <label for="newPassword" class="d-block w-100">Enter New Password</label>
+                                    <input type="password" id="newPassword" name="newPassword"
+                                        placeholder="New Password" class="w-100 h-52" required>
+                                    <div class="pass-health-progress">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <progress id="progress1" value="0" max="33"></progress>
+                                            <progress id="progress2" value="0" max="33"></progress>
+                                            <progress id="progress3" value="0" max="33"></progress>
+                                        </div>
+                                        <label id="passHealth">Weak</label>
+                                    </div>
+                                </div>
+                                <div class="input-row">
+                                    <label for="confirmPassword" class="d-block w-100">Enter Confirm New
+                                        Password</label>
+                                    <input type="password" id="confirmPassword" name="confirmPassword"
+                                        placeholder="Confirm New Password" class="w-100 h-52" required>
+                                </div>
+                                <div class="pass-health-msg">
+                                    <img src="images/warning.png">
+                                    <p>
+                                        <span>Password Strength:</span>
+                                        Weak, Missing 10 characters, Missing special character
+                                    </p>
+                                </div>
+                                <button type="button" id="submitBtn" class="btn primary w-100 h-52 text-white">Reset
+                                    Password</button>
+                            </form>
+                        </div>
+                        <div class="change-password-content-wrap">
+                            <div class="change-password-content">
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" id="length" disabled> 10 characters long
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="numeric" disabled> One numeric character
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="uppercase" disabled> One uppercase character
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="lowercase" disabled> One lowercase character
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="special" disabled> One special character
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="match" disabled> New and Confirm password must match
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="notFirstName" disabled> Password should not contain
+                                        your first name
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="notLastName" disabled> Password should not contain
+                                        your last name
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" id="notUsername" disabled> Password should not contain
+                                        your username
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery Script for validation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const firstName = "Gobi";
+            const lastName = "Krishna";
+            const username = "gobikrishna";
+
+            $("#newPassword, #confirmPassword").on("keyup", function () {
+                let password = $("#newPassword").val();
+                let confirmPassword = $("#confirmPassword").val();
+
+                // Check password length
+                $("#length").prop("checked", password.length >= 10);
+
+                // Check for numeric character
+                $("#numeric").prop("checked", /\d/.test(password));
+
+                // Check for uppercase character
+                $("#uppercase").prop("checked", /[A-Z]/.test(password));
+
+                // Check for lowercase character
+                $("#lowercase").prop("checked", /[a-z]/.test(password));
+
+                // Check for special character
+                $("#special").prop("checked", /[!@#$%^&*(),.?":{}|<>]/.test(password));
+
+                // Check if passwords match
+                $("#match").prop("checked", password === confirmPassword);
+
+                // Check if password does not contain first name, last name, or username
+                $("#notFirstName").prop("checked", !password.toLowerCase().includes(firstName.toLowerCase()));
+                $("#notLastName").prop("checked", !password.toLowerCase().includes(lastName.toLowerCase()));
+                $("#notUsername").prop("checked", !password.toLowerCase().includes(username.toLowerCase()));
+
+                // Password strength progress
+                let strength = 0;
+                if (password.length >= 10) strength += 2;
+                if (/\d/.test(password)) strength += 1;
+                if (/[A-Z]/.test(password)) strength += 1;
+                if (/[a-z]/.test(password)) strength += 1;
+                if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 2;
+                if (password === confirmPassword) strength += 1;
+                if (!password.toLowerCase().includes(firstName.toLowerCase()) &&
+                    !password.toLowerCase().includes(lastName.toLowerCase()) &&
+                    !password.toLowerCase().includes(username.toLowerCase())) {
+                    strength += 1;
+                }
+
+                // Update progress bar
+                $("#progress1").val(strength >= 3 ? 33 : 0);
+                $("#progress2").val(strength >= 6 ? 33 : 0);
+                $("#progress3").val(strength === 8 ? 33 : 0);
+
+                // Update password strength label
+                let strengthLabel = "Weak";
+                if (strength >= 3 && strength < 6) strengthLabel = "Moderate";
+                if (strength === 8) strengthLabel = "Strong";
+                $("#passHealth").text(strengthLabel);
+            });
+
+            $("#submitBtn").on("click", function () {
+                if ($("#changePasswordForm")[0].checkValidity() &&
+                    $("#length").is(":checked") &&
+                    $("#numeric").is(":checked") &&
+                    $("#uppercase").is(":checked") &&
+                    $("#lowercase").is(":checked") &&
+                    $("#special").is(":checked") &&
+                    $("#match").is(":checked") &&
+                    $("#notFirstName").is(":checked") &&
+                    $("#notLastName").is(":checked") &&
+                    $("#notUsername").is(":checked")) {
+                    alert("Password successfully changed!");
+                } else {
+                    alert("Please ensure all password requirements are met.");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
